@@ -2,7 +2,7 @@ library(jsonlite)
 library(tidyverse)
 library(ggplot2)
 MechaCarTable <- read.csv(file='MechaCar_mpg.csv',check.names=F,stringsAsFactors = F)
-summary(lm(mpg~`vehicle length`+`vehicle weight`+`spoiler angle`+`ground clearance`+`AWD`,MechaCarTable))
+summary(lm(mpg~`vehicle length`+`vehicle weight`+`spoiler angle`+`ground clearance`,MechaCarTable))
 #Summary liner regression
 
 suspenstionCoilTable <- read.csv(file='Suspension_Coil.csv',check.names=F,stringsAsFactors = F)
