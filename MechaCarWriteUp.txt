@@ -1,29 +1,32 @@
 MPG Regression
 ---------------
+The muliple liner regression that I have calculated is between mpg and vehical length, vehical weight, spoiler angle, ground clearance from Mecha file. Since Pr(>|t|) value represents the probability that each coefficient contributes a random amount of variance to the linear model, the below results show vehical lenght and ground clearance are the only two variables that are statistically unlikely to provide random amounts of variance to the linear model. Intercept is relatively lower so the impact of other variables seems lower on mpg. The r-squared value  0.6768 is the coefficient of determination and represents that the regression model approximates well with real-world data points.
+
 1> Question: Which variables/coefficients provided a non-random amount of variance to the mpg values in the dataset?
    Answer:   vehicle length / ground clearance provide a non-random amount of vairance to the mpg values in the dataset.
 
 Script:
-    summary(lm(mpg~`vehicle length`+`vehicle weight`+`spoiler angle`+`ground clearance`+`AWD`,MechaCarTable))
+    summary(lm(mpg~`vehicle length`+`vehicle weight`+`spoiler angle`+`ground clearance`,MechaCarTable))
 
 Result:
- Residuals:
-   Min       1Q   Median       3Q      Max 
- -19.4701  -4.4994  -0.0692   5.4433  18.5849 
- Coefficients:
-   Estimate Std. Error t value Pr(>|t|)    
- (Intercept)        -1.040e+02  1.585e+01  -6.559 5.08e-08 ***
-   `vehicle length`    6.267e+00  6.553e-01   9.563 2.60e-12 ***
-   `vehicle weight`    1.245e-03  6.890e-04   1.807   0.0776 .  
-   `spoiler angle`     6.877e-02  6.653e-02   1.034   0.3069    
-   `ground clearance`  3.546e+00  5.412e-01   6.551 5.21e-08 ***
-    AWD                -3.411e+00  2.535e+00  -1.346   0.1852    
-   ---
-   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
- 
- Residual standard error: 8.774 on 44 degrees of freedom
- Multiple R-squared:  0.7149,	Adjusted R-squared:  0.6825 
- F-statistic: 22.07 on 5 and 44 DF,  p-value: 5.35e-11
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-21.3395  -4.1155  -0.2094   6.8789  17.2672 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(>|t|)    
+(Intercept)        -1.076e+02  1.576e+01  -6.823 1.87e-08 ***
+`vehicle length`    6.240e+00  6.609e-01   9.441 3.05e-12 ***
+`vehicle weight`    1.277e-03  6.948e-04   1.837   0.0728 .  
+`spoiler angle`     8.031e-02  6.656e-02   1.207   0.2339    
+`ground clearance`  3.659e+00  5.394e-01   6.784 2.13e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 8.853 on 45 degrees of freedom
+Multiple R-squared:  0.7032,	Adjusted R-squared:  0.6768 
+F-statistic: 26.65 on 4 and 45 DF,  p-value: 2.277e-11
+
 
 2> Question: Is the slope of the linear model considered to be zero? Why or why not?
    Answer:   p-value of the hypothisis: 5.35e-11. which is smaller then 0.05 significant level
