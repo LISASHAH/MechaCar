@@ -1,4 +1,4 @@
-#MPG Regression
+<B>MPG Regression</B>
 ##Question: Which variables/coefficients provided a non-random amount of variance to the mpg values in the dataset?
 ##Answer: vehicle length / ground clearance provide a non-random amount of vairance to the mpg values in the dataset.
 ##Script:
