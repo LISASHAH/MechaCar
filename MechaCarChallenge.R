@@ -1,0 +1,28 @@
+library(jsonlite)
+library(tidyverse)
+library(ggplot2)
+#Read CSV file
+MechaCarTable <- read.csv(file='MechaCar_mpg.csv',check.names=F,stringsAsFactors = F)
+#Summary liner regression
+summary(lm(mpg~`vehicle length`+`vehicle weight`+`spoiler angle`+`ground clearance`+`AWD`,MechaCarTable))
+#Read CSV file
+suspenstionCoilTable <- read.csv(file='Suspension_Coil.csv',check.names=F,stringsAsFactors = F)
+#Read suspension coil
+#Find mean median variance and SD by lot and for the entire population
+SuspensionCoilByLot <- suspenstionCoilTable %>% group_by(Manufacturing_Lot) %>%
+  summarise(Mean=mean(PSI),Median=median(PSI),Variance=var(PSI),SD=sd(PSI))
+print(SuspensionCoilByLot)  
+SuspensionCoilSummary <- suspenstionCoilTable %>% 
+  summarise(Mean=mean(PSI),Median=median(PSI),Variance=var(PSI),SD=sd(PSI))
+print(SuspensionCoilSummary)
+
+#determine if the suspension coil’s pound-per-inch results are statistically different 
+#from the mean population results of 1,500 pounds per inch. 
+
+lot1 <- filter(suspenstionCoilTable, Manufacturing_Lot == "Lot1")
+lot2 <- filter(suspenstionCoilTable, Manufacturing_Lot == "Lot2")
+lot3 <- filter(suspenstionCoilTable, Manufacturing_Lot == "Lot3")
+t.test(lot1$PSI,mu=1500)
+t.test(lot2$PSI,mu=1500)
+t.test(lot3$PSI,mu=1500)
+t.test(suspenstionCoilTable$PSI,mu=1500)
